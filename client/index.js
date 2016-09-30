@@ -14,14 +14,14 @@ require('./assets/form.css');
             ngRoute,
             ngResource
         ])
-        .config(['$routeProvider', ($routeProvider) => {
+        .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/', {
-                    templateUrl: './client/form/template.html',
+                    templateUrl: './client/app/form/template.html',
                     controller: 'formCtrl'
                 })
                 .when('/user', {
-                    templateUrl: './client/user/template.html',
+                    templateUrl: './client/app/user/template.html',
                     controller: 'userCtrl'
                 })
                 .otherwise('/');
@@ -34,9 +34,8 @@ require('./assets/form.css');
     require('angular'),
     require('angular-route'),
     require('angular-resource'),
-    require('./helpers/api'),
-    require('./helpers/info'),
-    require('./form/controller'),
-    require('./user/controller')
-
+    require('./app/helpers/api'),
+    require('./app/helpers/info'),
+    require('./app/form/controller'),
+    require('./app/user/controller')
 );
