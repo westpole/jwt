@@ -20,3 +20,11 @@ Use default user credentials to get successful result
 
     user: dartwader
     password: pass123
+
+Test project code base:
+
+    # run single test suit
+    npm test
+
+    # when develop in TDD style
+    npm run tdd
