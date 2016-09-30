@@ -1,0 +1,37 @@
+{
+  "name": "jwt",
+  "version": "1.0.0",
+  "description": "Test task for Fitness republic",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node ./server/server.js",
+    "client": "webpack-dev-server --colors --port 8082 --config webpack-dev.config.js"
+  },
+  "keywords": [
+    "JWT",
+    "Nodejs",
+    "Angular 1.5.9",
+    "$resource"
+  ],
+  "author": "Stanislav Spuzyak",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9"
+  },
+  "devDependencies": {
+    "babel-core": "^6.16.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "html-webpack-plugin": "^2.22.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  }
+}

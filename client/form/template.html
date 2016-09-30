@@ -1,0 +1,42 @@
+<section class="container">
+    <div
+        class="alert"
+        ng-class="{
+            'alert-success': message.title === 'success',
+            'alert-danger': message.title !== 'success'
+        }"
+        ng-if="message.title"
+    >
+        <h4 ng-cloak>{{ message.title }}</h4>
+        <p ng-cloak>{{ message.content }}</p>
+    </div>
+
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+
+        <label for="user" class="sr-only">User name</label>
+        <input
+            type="text"
+            id="user"
+            name="user"
+            class="form-control"
+            ng-model="form.user"
+            placeholder="User name"
+            required=""
+            autofocus=""
+        />
+
+        <label for="password" class="sr-only">Password</label>
+        <input
+            type="password"
+            id="password"
+            name="passowrd"
+            class="form-control"
+            ng-model="form.password"
+            placeholder="Password"
+            required=""
+        />
+
+        <button class="btn btn-lg btn-primary btn-block" ng-click="auth($event)">Sign in</button>
+    </form>
+</section>
