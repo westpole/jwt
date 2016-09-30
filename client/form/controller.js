@@ -12,8 +12,6 @@ module.exports = function formCtrl($scope, $location, api, info) {
     $scope.form = {};
     $scope.message = {};
 
-    const authApi = api('auth');
-
     /**
      * Sign user in the application
      *
@@ -26,32 +24,18 @@ module.exports = function formCtrl($scope, $location, api, info) {
 
         $scope.message = {};
 
-        authApi.save({}, $scope.form, onSuccess, onError);
+        api('auth')
+            .save({}, $scope.form)
+            .$promise
+                .then((data) => {
+                    info.token = data.token;
+
+                    $location.path('/user');
+                })
+                .catch((error) => {
+                    displayMessage(`${error.status}: ${error.data.status}`, error.data.message);
+                });
     };
-
-    /**
-     * On successful user authorization
-     *
-     * @param   {Object}    data response
-     *
-     * @returns {Undefined}
-     */
-    function onSuccess(data) {
-        info.token = data.token;
-
-        $location.path('/user');
-    }
-
-    /**
-     * On failed user authorization
-     *
-     * @param   {Object}    error response
-     *
-     * @returns {Undefined}
-     */
-    function onError(error) {
-        displayMessage(`${error.status}: ${error.data.status}`, error.data.message);
-    }
 
     /**
      * Update message scope

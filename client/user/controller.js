@@ -11,31 +11,15 @@ module.exports = function userHandler($scope, api, info) {
     $scope.token = info.token;
     $scope.message = {};
 
-    const authApi = api('user');
-
-    authApi.get({ token: info.token }, onSuccess, onError);
-
-    /**
-     * On successful user authorization
-     *
-     * @param   {Object}    data response
-     *
-     * @returns {Undefined}
-     */
-    function onSuccess(data) {
-        $scope.user = data.data.varification.user;
-    }
-
-    /**
-     * On failed user authorization
-     *
-     * @param   {Object}    error response
-     *
-     * @returns {Undefined}
-     */
-    function onError(error) {
-        displayMessage(`${error.status}: ${error.data.status}`, error.data.message);
-    }
+    api('user')
+        .get({ token: info.token })
+        .$promise
+            .then((data) => {
+                $scope.user = data.data.varification.user;
+            })
+            .catch((error) => {
+                displayMessage(`${error.status}: ${error.data.status}`, error.data.message);
+            });
 
     /**
      * Update message scope
