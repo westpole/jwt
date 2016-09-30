@@ -1,4 +1,5 @@
 const userBase = require('../data/user');
+const passManager = require('./password');
 const jwt = require('jsonwebtoken');
 
 module.exports = function (req, res) {
@@ -11,7 +12,7 @@ module.exports = function (req, res) {
             });
     }
 
-    if (req.body.password !== userBase.credentials[req.body.user]) {
+    if (!passManager.validate(userBase.credentials[req.body.user], req.body.password)) {
         return res
             .status('401')
             .send({
